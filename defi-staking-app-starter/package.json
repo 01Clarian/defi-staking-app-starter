@@ -27,6 +27,7 @@
     "react-tsparticles": "^1.31.2",
     "solc": "^0.8.6",
     "truffle": "^5.1.39",
+    "ttab": "^0.7.2",
     "typescript": "^4.3.5",
     "web3": "1.2.11"
   },
