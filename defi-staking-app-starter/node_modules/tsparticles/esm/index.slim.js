@@ -1,0 +1,13 @@
+import { MainSlim } from "./main.slim";
+import { initPjs } from "./pjs";
+import { CanvasUtils, Circle, CircleWarp, ColorUtils, Constants, Point, Rectangle, Utils } from "./Utils";
+const tsParticles = new MainSlim();
+tsParticles.init();
+const { particlesJS, pJSDom } = initPjs(tsParticles);
+export * from "./Core/Particle/Vector";
+export * from "./Core/Container";
+export * from "./Enums";
+export { CanvasUtils, Circle, CircleWarp, ColorUtils, Constants, Point, Rectangle, Utils, MainSlim };
+export * from "./Types";
+export * from "./Core/Interfaces/IShapeValues";
+export { tsParticles, particlesJS, pJSDom };

@@ -1,0 +1,45 @@
+<html>
+
+<head>
+<title>Pathsegtest</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8"> 
+
+<!--Replacement for removed SVG path segment API-->
+ <script src="pathseg.js"></script> 
+
+</head>
+<body>
+
+<div id="pagewrapper">
+
+<svg id="svg"  style="width:200px;height:200px;overflow: visible;" xmlns="http://www.w3.org/2000/svg" viewBox="0,0, 1000 1000" preserveAspectRatio="xMidYMid slice">
+</svg>
+<script>
+
+var NS ='http://www.w3.org/2000/svg';
+var svg = document.getElementById("svg");
+console.log(svg);
+// make path
+var path = document.createElementNS(NS, "path");
+path.setAttribute("d","m 230.1796875 725 c -7.64 0 -27.35 -0.1 -36.45 -0.1 c -99.39 0.28 -113.73 -76.075 -113.73 -139.195 c 0 -134.18 56.72 -264.55 150.18 -311.49");
+svg.appendChild(path);
+// edit path seglist; Move the whole path by changing first segment coordinates
+// This works as expected without pathseg.js, fails with it
+console.log("pathSegList before", path.pathSegList);
+console.log("._list before", path.pathSegList._list);
+
+path.pathSegList[0].x = 200;
+path.pathSegList[0].y = 600;
+console.log("pathSegList after", path.pathSegList);
+// movepath
+
+
+
+
+
+</script>
+
+  
+</div>
+</body></html>

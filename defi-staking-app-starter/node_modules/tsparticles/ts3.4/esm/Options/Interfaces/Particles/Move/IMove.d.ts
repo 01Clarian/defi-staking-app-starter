@@ -1,0 +1,33 @@
+import { IAttract } from "./IAttract";
+import { MoveDirection, MoveDirectionAlt, OutMode, OutModeAlt } from "../../../../Enums";
+import { ITrail } from "./ITrail";
+import { IPath } from "./Path/iPath";
+import { IMoveAngle } from "./IMoveAngle";
+import { IMoveGravity } from "./IMoveGravity";
+import { IOutModes } from "./IOutModes";
+import { RangeValue } from "../../../../Types";
+import { IDistance } from "../../../../Core/Interfaces";
+export interface IMove {
+    bounce: boolean;
+    collisions: boolean;
+    out_mode: OutMode | keyof typeof OutMode | OutModeAlt;
+    outMode: OutMode | keyof typeof OutMode | OutModeAlt;
+    noise: IPath;
+    angle: number | IMoveAngle;
+    attract: IAttract;
+    decay: number;
+    direction: MoveDirection | keyof typeof MoveDirection | MoveDirectionAlt | number;
+    distance: number | Partial<IDistance>;
+    drift: RangeValue;
+    enable: boolean;
+    gravity: IMoveGravity;
+    outModes: IOutModes | OutMode | keyof typeof OutMode | OutModeAlt;
+    path: IPath;
+    random: boolean;
+    size: boolean;
+    speed: RangeValue;
+    straight: boolean;
+    trail: ITrail;
+    vibrate: boolean;
+    warp: boolean;
+}

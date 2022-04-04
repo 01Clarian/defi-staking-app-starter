@@ -1,0 +1,38 @@
+import { IOptions } from "../Interfaces/IOptions";
+import { Interactivity } from "./Interactivity/Interactivity";
+import { ParticlesOptions } from "./Particles/ParticlesOptions";
+import { BackgroundMask } from "./BackgroundMask/BackgroundMask";
+import { RecursivePartial } from "../../Types";
+import { Background } from "./Background/Background";
+import { IOptionLoader } from "../Interfaces/IOptionLoader";
+import { Theme } from "./Theme/Theme";
+import { FullScreen } from "./FullScreen/FullScreen";
+import { Motion } from "./Motion/Motion";
+import { ManualParticle } from "./ManualParticle";
+import { Responsive } from "./Responsive";
+export declare class Options implements IOptions, IOptionLoader<IOptions> {
+    fps_limit: number;
+    retina_detect: boolean;
+    backgroundMode: FullScreen;
+    autoPlay: boolean;
+    background: Background;
+    backgroundMask: BackgroundMask;
+    detectRetina: boolean;
+    fpsLimit: number;
+    fullScreen: FullScreen;
+    interactivity: Interactivity;
+    manualParticles: ManualParticle[];
+    motion: Motion;
+    particles: ParticlesOptions;
+    pauseOnBlur: boolean;
+    pauseOnOutsideViewport: boolean;
+    preset?: string | string[];
+    responsive: Responsive[];
+    themes: Theme[];
+    [name: string]: unknown;
+    constructor();
+    load(data?: RecursivePartial<IOptions>): void;
+    setTheme(name?: string): void;
+    private importPreset;
+    setResponsive(width: number, pxRatio: number, defaultOptions: IOptions): void;
+}

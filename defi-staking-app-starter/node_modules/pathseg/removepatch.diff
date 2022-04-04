@@ -1,0 +1,302 @@
+--- a/dom/webidl/SVGPathElement.webidl
++++ b/dom/webidl/SVGPathElement.webidl
+@@ -7,50 +7,12 @@
+  * http://www.w3.org/TR/SVG2/
+  *
+  * Copyright © 2012 W3C® (MIT, ERCIM, Keio), All Rights Reserved. W3C
+  * liability, trademark and document use rules apply.
+  */
+ interface SVGPathElement : SVGGeometryElement {
+ 
+   unsigned long getPathSegAtLength(float distance);
+-  [NewObject]
+-  SVGPathSegClosePath createSVGPathSegClosePath();
+-  [NewObject]
+-  SVGPathSegMovetoAbs createSVGPathSegMovetoAbs(float x, float y);
+-  [NewObject]
+-  SVGPathSegMovetoRel createSVGPathSegMovetoRel(float x, float y);
+-  [NewObject]
+-  SVGPathSegLinetoAbs createSVGPathSegLinetoAbs(float x, float y);
+-  [NewObject]
+-  SVGPathSegLinetoRel createSVGPathSegLinetoRel(float x, float y);
+-  [NewObject]
+-  SVGPathSegCurvetoCubicAbs createSVGPathSegCurvetoCubicAbs(float x, float y, float x1, float y1, float x2, float y2);
+-  [NewObject]
+-  SVGPathSegCurvetoCubicRel createSVGPathSegCurvetoCubicRel(float x, float y, float x1, float y1, float x2, float y2);
+-  [NewObject]
+-  SVGPathSegCurvetoQuadraticAbs createSVGPathSegCurvetoQuadraticAbs(float x, float y, float x1, float y1);
+-  [NewObject]
+-  SVGPathSegCurvetoQuadraticRel createSVGPathSegCurvetoQuadraticRel(float x, float y, float x1, float y1);
+-  [NewObject]
+-  SVGPathSegArcAbs createSVGPathSegArcAbs(float x, float y, float r1, float r2, float angle, boolean largeArcFlag, boolean sweepFlag);
+-  [NewObject]
+-  SVGPathSegArcRel createSVGPathSegArcRel(float x, float y, float r1, float r2, float angle, boolean largeArcFlag, boolean sweepFlag);
+-  [NewObject]
+-  SVGPathSegLinetoHorizontalAbs createSVGPathSegLinetoHorizontalAbs(float x);
+-  [NewObject]
+-  SVGPathSegLinetoHorizontalRel createSVGPathSegLinetoHorizontalRel(float x);
+-  [NewObject]
+-  SVGPathSegLinetoVerticalAbs createSVGPathSegLinetoVerticalAbs(float y);
+-  [NewObject]
+-  SVGPathSegLinetoVerticalRel createSVGPathSegLinetoVerticalRel(float y);
+-  [NewObject]
+-  SVGPathSegCurvetoCubicSmoothAbs createSVGPathSegCurvetoCubicSmoothAbs(float x, float y, float x2, float y2);
+-  [NewObject]
+-  SVGPathSegCurvetoCubicSmoothRel createSVGPathSegCurvetoCubicSmoothRel(float x, float y, float x2, float y2);
+-  [NewObject]
+-  SVGPathSegCurvetoQuadraticSmoothAbs createSVGPathSegCurvetoQuadraticSmoothAbs(float x, float y);
+-  [NewObject]
+-  SVGPathSegCurvetoQuadraticSmoothRel createSVGPathSegCurvetoQuadraticSmoothRel(float x, float y);
+ };
+ 
+ SVGPathElement implements SVGAnimatedPathData;
+ 
+--- a/dom/webidl/SVGPathSeg.webidl
++++ b/dom/webidl/SVGPathSeg.webidl
+@@ -5,16 +5,17 @@
+  *
+  * The origin of this IDL file is
+  * http://www.w3.org/TR/SVG2/
+  *
+  * Copyright © 2012 W3C® (MIT, ERCIM, Keio), All Rights Reserved. W3C
+  * liability, trademark and document use rules apply.
+  */
+ 
++[NoInterfaceObject]
+ interface SVGPathSeg {
+ 
+   // Path Segment Types
+   const unsigned short PATHSEG_UNKNOWN = 0;
+   const unsigned short PATHSEG_CLOSEPATH = 1;
+   const unsigned short PATHSEG_MOVETO_ABS = 2;
+   const unsigned short PATHSEG_MOVETO_REL = 3;
+   const unsigned short PATHSEG_LINETO_ABS = 4;
+@@ -35,99 +36,109 @@ interface SVGPathSeg {
+   const unsigned short PATHSEG_CURVETO_QUADRATIC_SMOOTH_REL = 19;
+ 
+   [Pure]
+   readonly attribute unsigned short pathSegType;
+   [Pure]
+   readonly attribute DOMString pathSegTypeAsLetter;
+ };
+ 
++[NoInterfaceObject]
+ interface SVGPathSegClosePath : SVGPathSeg {
+ };
+ 
++[NoInterfaceObject]
+ interface SVGPathSegMovetoAbs : SVGPathSeg {
+   [SetterThrows]
+   attribute float x;
+   [SetterThrows]
+   attribute float y;
+ };
+ 
++[NoInterfaceObject]
+ interface SVGPathSegMovetoRel : SVGPathSeg {
+   [SetterThrows]
+   attribute float x;
+   [SetterThrows]
+   attribute float y;
+ };
+ 
++[NoInterfaceObject]
+ interface SVGPathSegLinetoAbs : SVGPathSeg {
+   [SetterThrows]
+   attribute float x;
+   [SetterThrows]
+   attribute float y;
+ };
+ 
++[NoInterfaceObject]
+ interface SVGPathSegLinetoRel : SVGPathSeg {
+   [SetterThrows]
+   attribute float x;
+   [SetterThrows]
+   attribute float y;
+ };
+ 
++[NoInterfaceObject]
+ interface SVGPathSegCurvetoCubicAbs : SVGPathSeg {
+   [SetterThrows]
+   attribute float x;
+   [SetterThrows]
+   attribute float y;
+   [SetterThrows]
+   attribute float x1;
+   [SetterThrows]
+   attribute float y1;
+   [SetterThrows]
+   attribute float x2;
+   [SetterThrows]
+   attribute float y2;
+ };
+ 
++[NoInterfaceObject]
+ interface SVGPathSegCurvetoCubicRel : SVGPathSeg {
+   [SetterThrows]
+   attribute float x;
+   [SetterThrows]
+   attribute float y;
+   [SetterThrows]
+   attribute float x1;
+   [SetterThrows]
+   attribute float y1;
+   [SetterThrows]
+   attribute float x2;
+   [SetterThrows]
+   attribute float y2;
+ };
+ 
++[NoInterfaceObject]
+ interface SVGPathSegCurvetoQuadraticAbs : SVGPathSeg {
+   [SetterThrows]
+   attribute float x;
+   [SetterThrows]
+   attribute float y;
+   [SetterThrows]
+   attribute float x1;
+   [SetterThrows]
+   attribute float y1;
+ };
+ 
++[NoInterfaceObject]
+ interface SVGPathSegCurvetoQuadraticRel : SVGPathSeg {
+   [SetterThrows]
+   attribute float x;
+   [SetterThrows]
+   attribute float y;
+   [SetterThrows]
+   attribute float x1;
+   [SetterThrows]
+   attribute float y1;
+ };
+ 
++[NoInterfaceObject]
+ interface SVGPathSegArcAbs : SVGPathSeg {
+   [SetterThrows]
+   attribute float x;
+   [SetterThrows]
+   attribute float y;
+   [SetterThrows]
+   attribute float r1;
+   [SetterThrows]
+@@ -135,16 +146,17 @@ interface SVGPathSegArcAbs : SVGPathSeg 
+   [SetterThrows]
+   attribute float angle;
+   [SetterThrows]
+   attribute boolean largeArcFlag;
+   [SetterThrows]
+   attribute boolean sweepFlag;
+ };
+ 
++[NoInterfaceObject]
+ interface SVGPathSegArcRel : SVGPathSeg {
+   [SetterThrows]
+   attribute float x;
+   [SetterThrows]
+   attribute float y;
+   [SetterThrows]
+   attribute float r1;
+   [SetterThrows]
+@@ -152,64 +164,72 @@ interface SVGPathSegArcRel : SVGPathSeg 
+   [SetterThrows]
+   attribute float angle;
+   [SetterThrows]
+   attribute boolean largeArcFlag;
+   [SetterThrows]
+   attribute boolean sweepFlag;
+ };
+ 
++[NoInterfaceObject]
+ interface SVGPathSegLinetoHorizontalAbs : SVGPathSeg {
+   [SetterThrows]
+   attribute float x;
+ };
+ 
++[NoInterfaceObject]
+ interface SVGPathSegLinetoHorizontalRel : SVGPathSeg {
+   [SetterThrows]
+   attribute float x;
+ };
+ 
++[NoInterfaceObject]
+ interface SVGPathSegLinetoVerticalAbs : SVGPathSeg {
+   [SetterThrows]
+   attribute float y;
+ };
+ 
++[NoInterfaceObject]
+ interface SVGPathSegLinetoVerticalRel : SVGPathSeg {
+   [SetterThrows]
+   attribute float y;
+ };
+ 
++[NoInterfaceObject]
+ interface SVGPathSegCurvetoCubicSmoothAbs : SVGPathSeg {
+   [SetterThrows]
+   attribute float x;
+   [SetterThrows]
+   attribute float y;
+   [SetterThrows]
+   attribute float x2;
+   [SetterThrows]
+   attribute float y2;
+ };
+ 
++[NoInterfaceObject]
+ interface SVGPathSegCurvetoCubicSmoothRel : SVGPathSeg {
+   [SetterThrows]
+   attribute float x;
+   [SetterThrows]
+   attribute float y;
+   [SetterThrows]
+   attribute float x2;
+   [SetterThrows]
+   attribute float y2;
+ };
+ 
++[NoInterfaceObject]
+ interface SVGPathSegCurvetoQuadraticSmoothAbs : SVGPathSeg {
+   [SetterThrows]
+   attribute float x;
+   [SetterThrows]
+   attribute float y;
+ };
+ 
++[NoInterfaceObject]
+ interface SVGPathSegCurvetoQuadraticSmoothRel : SVGPathSeg {
+   [SetterThrows]
+   attribute float x;
+   [SetterThrows]
+   attribute float y;
+ };
+ 
+--- a/dom/webidl/SVGPathSegList.webidl
++++ b/dom/webidl/SVGPathSegList.webidl
+@@ -8,25 +8,13 @@
+  *
+  * Copyright © 2012 W3C® (MIT, ERCIM, Keio), All Rights Reserved. W3C
+  * liability, trademark and document use rules apply.
+  */
+ 
+ interface SVGPathSegList {
+   readonly attribute unsigned long numberOfItems;
+   [Throws]
+-  void clear();
+-  [Throws]
+-  SVGPathSeg initialize(SVGPathSeg newItem);
+-  [Throws]
+   getter SVGPathSeg getItem(unsigned long index);
+-  [Throws]
+-  SVGPathSeg insertItemBefore(SVGPathSeg newItem, unsigned long index);
+-  [Throws]
+-  SVGPathSeg replaceItem(SVGPathSeg newItem, unsigned long index);
+-  [Throws]
+-  SVGPathSeg removeItem(unsigned long index);
+-  [Throws]
+-  SVGPathSeg appendItem(SVGPathSeg newItem);
+ 
+   // Mozilla-specific stuff
+   readonly attribute unsigned long length; // synonym for numberOfItems
+ };

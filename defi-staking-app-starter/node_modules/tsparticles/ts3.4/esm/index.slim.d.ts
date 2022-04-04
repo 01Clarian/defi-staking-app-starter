@@ -1,0 +1,17 @@
+import { MainSlim } from "./main.slim";
+import { CanvasUtils, Circle, CircleWarp, ColorUtils, Constants, Point, Rectangle, Utils } from "./Utils";
+import { IOptions } from "./Options/Interfaces/IOptions";
+import { RecursivePartial } from "./Types";
+import { IParticle } from "./Core/Interfaces";
+declare const tsParticles: MainSlim;
+declare const particlesJS: import("./pjs").IParticlesJS, pJSDom: import("./Core/Container").Container[];
+export * from "./Core/Particle/Vector";
+export * from "./Core/Container";
+export * from "./Enums";
+export { CanvasUtils, Circle, CircleWarp, ColorUtils, Constants, Point, Rectangle, Utils, MainSlim };
+export * from "./Types";
+export * from "./Core/Interfaces/IShapeValues";
+export { tsParticles, particlesJS, pJSDom };
+export { IOptions };
+export { IParticle };
+export declare type ISourceOptions = RecursivePartial<IOptions>;

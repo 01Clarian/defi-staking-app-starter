@@ -1,0 +1,37 @@
+import { IMove } from "../../../Interfaces/Particles/Move/IMove";
+import { Attract } from "./Attract";
+import { MoveDirection, MoveDirectionAlt, OutMode, OutModeAlt } from "../../../../Enums";
+import { Trail } from "./Trail";
+import { RangeValue, RecursivePartial } from "../../../../Types";
+import { Path } from "./Path/Path";
+import { IOptionLoader } from "../../../Interfaces/IOptionLoader";
+import { MoveAngle } from "./MoveAngle";
+import { MoveGravity } from "./MoveGravity";
+import { OutModes } from "./OutModes";
+import { IDistance } from "../../../../Core/Interfaces";
+export declare class Move implements IMove, IOptionLoader<IMove> {
+    collisions: boolean;
+    bounce: boolean;
+    out_mode: OutMode | keyof typeof OutMode | OutModeAlt;
+    outMode: OutMode | keyof typeof OutMode | OutModeAlt;
+    noise: Path;
+    angle: MoveAngle;
+    attract: Attract;
+    direction: MoveDirection | keyof typeof MoveDirection | MoveDirectionAlt | number;
+    distance: Partial<IDistance>;
+    decay: number;
+    drift: RangeValue;
+    enable: boolean;
+    gravity: MoveGravity;
+    path: Path;
+    outModes: OutModes;
+    random: boolean;
+    size: boolean;
+    speed: RangeValue;
+    straight: boolean;
+    trail: Trail;
+    vibrate: boolean;
+    warp: boolean;
+    constructor();
+    load(data?: RecursivePartial<IMove>): void;
+}

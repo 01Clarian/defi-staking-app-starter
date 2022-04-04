@@ -1,0 +1,31 @@
+import { IInteractivity } from "./Interactivity/IInteractivity";
+import { IParticles } from "./Particles/IParticles";
+import { IBackgroundMask } from "./BackgroundMask/IBackgroundMask";
+import { IBackground } from "./Background/IBackground";
+import { SingleOrMultiple } from "../../Types";
+import { ITheme } from "./Theme/ITheme";
+import { IFullScreen } from "./FullScreen/IFullScreen";
+import { IMotion } from "./Motion/IMotion";
+import { IManualParticle } from "./IManualParticle";
+import { IResponsive } from "./IResponsive";
+export interface IOptions {
+    autoPlay: boolean;
+    background: IBackground;
+    backgroundMask: IBackgroundMask;
+    backgroundMode: IFullScreen;
+    detectRetina: boolean;
+    fps_limit: number;
+    fpsLimit: number;
+    fullScreen: IFullScreen;
+    interactivity: IInteractivity;
+    manualParticles: IManualParticle[];
+    motion: IMotion;
+    particles: IParticles;
+    pauseOnBlur: boolean;
+    pauseOnOutsideViewport: boolean;
+    preset?: SingleOrMultiple<string>;
+    responsive: IResponsive[];
+    retina_detect: boolean;
+    themes: ITheme[];
+    [name: string]: unknown;
+}

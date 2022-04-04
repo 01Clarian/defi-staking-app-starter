@@ -1,0 +1,27 @@
+<!doctype html>
+test for pathseg stuff in firefox
+<script>
+
+        Object.defineProperty(window.SVGPathSegList.prototype, "numberOfItems", {
+            get: function() {
+                console.log('calling my function')
+                return 20;
+            },
+            enumerable: true
+        });
+
+  
+
+  console.log("SVGPathSegList in window: " + ("SVGPathSegList" in window));
+  console.log("(appendItem in window.SVGPathSegList.prototype): " + ("appendItem" in window.SVGPathSegList.prototype));
+  var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("d", "M 0 0 L 100 0 L 100 100");
+
+  console.log(path.pathSegList);
+  console.log(path.pathSegList.numberOfItems);
+  console.log(path.pathSegList.length);
+
+  //console.log(path.pathSegList)
+  // Append second item from path1 to path2 list
+  //assert.equal(path2.pathSegList.appendItem(path2.pathSegList.getItem(3)).toString(), "[object SVGPathSegLinetoHorizontalRel]");
+</script>
