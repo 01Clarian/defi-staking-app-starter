@@ -10,10 +10,10 @@ contract DecentralBank {
     RWD public rwd;
 
 
-    constructor(RWD _rwd, Tether _tether) public {
+    constructor(RWD _rwd, Tether _tether) {
         rwd = _rwd;
         tether = _tether;
-        
+
 
     }
 

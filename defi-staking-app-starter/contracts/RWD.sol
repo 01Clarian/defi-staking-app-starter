@@ -25,7 +25,7 @@ contract RWD {
     mapping(address => uint256) public balanceOf; // Keeping track of the balance of each person
     mapping(address => mapping(address => uint256)) public allowance;
 
-    constructor() public {
+    constructor() {
         balanceOf[msg.sender] = totalSupply;
     }
 
