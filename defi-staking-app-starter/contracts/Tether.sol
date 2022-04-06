@@ -20,7 +20,7 @@ contract Tether {
 
     );
 
-    mapping(address => uint256) public balanceOf;
+    mapping(address => uint256) public balanceOf; // Keeping track of the balance of each person
     mapping(address => mapping(address => uint256)) public allowance;
 
     constructor() {
@@ -34,7 +34,7 @@ contract Tether {
         return true;
     }
 
-    //Writing out the logic for the function transfer
+    //Writing out the logic for the function transfer of monies #tOkEnoMICS
     function transfer(address _to, uint _value) public returns (bool success) {
         // Require that the value is greater than or equal to the transfer
         require(balanceOf[msg.sender] >= _value);
