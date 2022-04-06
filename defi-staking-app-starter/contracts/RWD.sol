@@ -1,9 +1,11 @@
 pragma solidity >=0.4.22 <0.9.0;
 
+// The functionality of the RWD contract is going to be identical to the tether contract
 
-contract Tether {
-    string public name = "Mock Tether Coin";
-    string public symbol = "USDT";
+
+contract RWD {
+    string public name = "Reward Token";
+    string public symbol = "RWD";
     uint256 public totalSupply = 1000000000000000000;
     uint8 public decimals = 18; 
 
