@@ -23,5 +23,5 @@ contract DecentralBank {
         tether = _tether;
 
     }
-    
+        
 }
