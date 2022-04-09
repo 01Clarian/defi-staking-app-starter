@@ -1,8 +1,13 @@
 pragma solidity ^0.5.0;
 
 
-contract Tether{
-    string public name = 'Mock Tether Token';
+contract RWD{
+    /*
+    Notes:
+        This contract has the EXACT same functionality as the tether contract, 
+        This is the reward token people are given when they put money into the yield farming liquidity pool
+    */
+    string public name = 'Mock Rewards Token';
     string public symbol = 'mUSDT';
     uint256 public totalSupply = 1000000000000000000000000; // 1 Million Tokens
     uint8 public decimals = 18;
