@@ -38,9 +38,7 @@ contract Tether{
         */
         //We want to approve that the perosn who 
         allowance[msg.sender][_spender] = _value;
-
         emit Approval(msg.sender, _spender, _value);
-
         return true;
     }
 
@@ -69,7 +67,7 @@ contract Tether{
             transferFrom contains very similar logic to transer, except this is third party transfer
             Which brings up the purpose of the allowance (which is yet to truly be seen)
         */
-        require(_value <= balanceOf[msg.sender]);
+        require(_value <= balanceOf[_from]);
         // What the heck does allowance even mean??
         require(_value <= allowance[_from][msg.sender]);
         //add the balance for transferFrom
@@ -82,7 +80,4 @@ contract Tether{
 
         return true;
     }
-
-
-    
 }
