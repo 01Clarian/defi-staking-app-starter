@@ -5167,12 +5167,13 @@
         }
       },
       "links": {},
-      "address": "0x18fD738ED2976114D4EF205b2aBd8F8820F808aC",
-      "transactionHash": "0x7aaf0b9fc3a4876949e1375d06bdaa37be8d2129f70e94ed02262ed4d079b8cf"
+      "address": "0x9c8341280A6B28ab02Bb2d136a37cc18A5075E7C",
+      "transactionHash": "0xdb8a293c2db25a8025efecfffe06b4dcb34e93f58ba236c10216dd86f306e700"
     }
   },
   "schemaVersion": "3.4.6",
-  "updatedAt": "2022-04-11T03:57:54.869Z",
+  "updatedAt": "2022-04-11T04:47:54.463Z",
+  "networkType": "ethereum",
   "devdoc": {
     "methods": {}
   },
