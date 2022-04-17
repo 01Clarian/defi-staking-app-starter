@@ -7,7 +7,7 @@ require('babel-polyfill');
 module.exports = {
     networks: {
         development: {
-        host: '127.0.0.1:',
+        host: 'HTTP://127.0.0.1:',
         port: '7545',
         network_id: '*' //Connect To Any Network
         },

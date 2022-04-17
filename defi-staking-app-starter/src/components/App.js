@@ -71,10 +71,34 @@ class App extends Component {
             window.alert('Error! DECENTRAL BANK CONTRACT NOT DEPLOYED')
         }
 
+
         this.setState({loading:false}) 
         //Change the state of loading data once we've loaded all data
     } //End Async for loading blockchain data 
     
+    
+    //Staking Functionality Pre-face
+    //twoFunctions, One that stakes and one that unstakes
+    //Leveraging two tokens in our decentral bank contract, deposit and unstaking tokens
+    //Staking Function, access decentral bank, deposit tokens and access the transaction hash
+    //function to approve transaction
+    //deposit tokens is TransferFrom functionality 
+    stakeTokens = (amount) => {
+        this.setState({loading:true})
+        this.state.tether.methods.approve(this.state.DecentralBank._address, amount).send({from: this.state.account}).on('transactionHash', (hash) => {
+        this.state.decentralBank.methods.depositTokens(amount).send({from: this.state.account}).on('transactionHash', (hash) =>{
+            this.setState({loading: false})
+        })
+    })
+    }
+    
+    //Unstake Token function
+    unstakeTokens = () => {
+        this.setState({loading:true})
+        this.state.decentralBank.methods.unstakeTokens().send({from: this.state.account}).on('transactionHash', (hash) =>{
+            this.setState({loading: false})
+        })
+    }
 
     //Props is a special feature in react where we cna pass through special proterties,
     //In our case we want to begin to integrate metamask with the web application
@@ -109,6 +133,8 @@ class App extends Component {
             tetherBalance = {this.state.tetherBalance}
             rwdBalance = {this.state.rwdBalance}
             stakingBalance = {this.state.stakingBalance}
+            stakeTokens={this.stakeTokens}
+            unstakeTokens = {this.unstakeTokens}
             />}
         
         
