@@ -1,5 +1,3 @@
-const { prototype } = require('events');
-
 require('babel-register');
 require('babel-polyfill');
 
