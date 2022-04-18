@@ -61,7 +61,7 @@ contract Tether{
         return true;
     }
 
-    function transferFrom(address _from,address _to, uint256 _value) public returns (bool success) {
+    function transferFrom(address _from, address _to, uint256 _value) public returns (bool success) {
         /*
         Notes:
             transferFrom contains very similar logic to transer, except this is third party transfer

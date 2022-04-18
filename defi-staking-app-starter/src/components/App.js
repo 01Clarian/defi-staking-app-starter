@@ -7,6 +7,7 @@ import Tether from '../truffle_abis/Tether.json'
 import RWD from '../truffle_abis/RWD.json'
 import DecentralBank from '../truffle_abis/DecentralBank.json'
 import Main from "./Main.js";
+import ParticleSettings from "./ParticleSettings.js"
 
 class App extends Component {
 
@@ -85,7 +86,7 @@ class App extends Component {
     //deposit tokens is TransferFrom functionality 
     stakeTokens = (amount) => {
         this.setState({loading:true})
-        this.state.tether.methods.approve(this.state.DecentralBank._address, amount).send({from: this.state.account}).on('transactionHash', (hash) => {
+        this.state.tether.methods.approve(this.state.decentralBank._address, amount).send({from: this.state.account}).on('transactionHash', (hash) => {
         this.state.decentralBank.methods.depositTokens(amount).send({from: this.state.account}).on('transactionHash', (hash) =>{
             this.setState({loading: false})
         })
@@ -137,11 +138,13 @@ class App extends Component {
             unstakeTokens = {this.unstakeTokens}
             />}
         
-        
-        
     return ( 
         //Divs are containers that allow us to put html, and css
-        <div>
+        <div className="App" style={{position: 'relative'}}>
+            <div style={{position:'absolute'}}>
+            <ParticleSettings/>
+            </div>
+
             <Navbar account = {this.state.account}/>
             <div className="container-fluid mt-5"> 
                 <div className="row">
