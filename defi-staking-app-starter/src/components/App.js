@@ -54,8 +54,8 @@ class App extends Component {
             let rwdBalance = await rwd.methods.balanceOf(this.state.account).call() 
             // I need to read web3 docs
             this.setState({rwdBalance: rwdBalance.toString()})
-            console.log({balance:rwdBalance.toString()})
-        } else {
+            console.log({rwdbalance:rwdBalance.toString()})
+        } else { 
             window.alert('Error! Reward Token CONTRACT NOT DEPLOYED')
         }
 
@@ -101,6 +101,14 @@ class App extends Component {
         })
     }
 
+    //Issue Reward Tokens 
+    issueRWDTokens = () => {
+        this.setState({loading:true})
+        this.state.decentralBank.methods.issueToken().send({from:this.state.account}).on('transactionHash', (hash) => {
+            this.setState({loading:false})
+        })
+    } 
+
     //Props is a special feature in react where we cna pass through special proterties,
     //In our case we want to begin to integrate metamask with the web application
     constructor(props){
@@ -136,6 +144,7 @@ class App extends Component {
             stakingBalance = {this.state.stakingBalance}
             stakeTokens={this.stakeTokens}
             unstakeTokens = {this.unstakeTokens}
+            issueRWDTokens = {this.issueRWDTokens}
             />}
         
     return ( 

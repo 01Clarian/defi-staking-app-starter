@@ -8,12 +8,12 @@ class Navbar extends Component {
         //Nav is the js version of div, but customized specifically for navbars (beneficially)
         //We're already using bootstrap with these classes
         <nav className="navbar navbar-dark fix-top shadow p-0"
-        style={{backgroundColor:'black', height:'50px'}}>
+        style={{backgroundColor:'Black', height:'50px'}}>
             <a className="navbar-brand col-sm-3 col-md-2 mr-0"
             style={{color:'white'}}> 
             <img src={bank} width='50' height='30' className='d-inline-block aligh-top'
             alt='bank'/>
-            &nbsp; DAPP Yield Farming (Decentralized Banking)
+            &nbsp; Decentralized Yield Farming
             </a>
             <ul className="navbar-nav px-3">
                 <li className="text-nowrap d-none nav-item d-sm-none d-sm-block">
