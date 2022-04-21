@@ -41,7 +41,7 @@ contract('DecentralBank', ([owner, customer]) => {
         })
     })
 
-    describe('Mock RWD Deployment', async () => {
+    describe('Reward Token Deployment', async () => {
         it('matches name successfully', async () => {
             const name = await rwd.name()
             assert.equal(name, 'Mock Rewards Token') 

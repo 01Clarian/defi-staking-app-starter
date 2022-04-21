@@ -20,6 +20,7 @@ class App extends Component {
     async loadWeb3(){ // This function connects the app to the blockchain, these steps are provided by metamask
         if (window.ethereum){
             window.web3 = new Web3(window.ethereum)
+            console.log(window.web3)
             await window.ethereum.enable()
         } else if (window.ethereum) {
                 window.web3 = new Web3(window.web3.currentProvider)
@@ -30,9 +31,11 @@ class App extends Component {
 
     async loadBlockchainData() {
         const web3 = window.web3
-        const account = await web3.eth.getAccounts();
-        this.setState({account:account[0]});
+        const accounts = await web3.eth.getAccounts();
+        console.log(web3.eth.getAccounts())
+        this.setState({account:accounts[0]});
         const newtworkId = await web3.eth.net.getId();
+        console.log(web3.eth.net.getId())
 
         //Load Tether Contract
         const tetherData = Tether.networks[newtworkId];
@@ -47,10 +50,12 @@ class App extends Component {
         }
 
         //Load RWD Data
-        const rwdData = RWD.networks[newtworkId];
-        if(rwdData){
-            const rwd = new web3.eth.Contract(RWD.abi, rwdData.address);
-            this.setState({rwd});
+        const rwdTokenData = RWD.networks[newtworkId];
+        if(rwdTokenData){
+            const rwd = new web3.eth.Contract(RWD.abi, rwdTokenData.address);
+            console.log({RwdDataAddress: rwdTokenData.address})
+            console.log({RwdDataAccount: rwdTokenData.account})
+            this.setState({RWD});
             let rwdBalance = await rwd.methods.balanceOf(this.state.account).call(); 
             // I need to read web3 docs
             this.setState({rwdBalance: rwdBalance.toString()});
@@ -105,7 +110,7 @@ class App extends Component {
     issueRWDTokens = () => {
         this.setState({loading:true})
         this.state.decentralBank.methods.issueToken().send({from: this.state.account}).on('transactionHash', (hash) => {
-            this.setState({loading:false});
+            this.setState({loading: false});
         });
     } 
 
