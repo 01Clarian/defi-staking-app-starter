@@ -30,50 +30,50 @@ class App extends Component {
 
     async loadBlockchainData() {
         const web3 = window.web3
-        const account = await web3.eth.getAccounts()
-        this.setState({account:account[0]})
-        const newtworkId = await web3.eth.net.getId()
+        const account = await web3.eth.getAccounts();
+        this.setState({account:account[0]});
+        const newtworkId = await web3.eth.net.getId();
 
         //Load Tether Contract
-        const tetherData = Tether.networks[newtworkId]
+        const tetherData = Tether.networks[newtworkId];
         if(tetherData){
-            const tether = new web3.eth.Contract(Tether.abi, tetherData.address)
-            this.setState({tether})
-            let tetherBalance = await tether.methods.balanceOf(this.state.account).call()
-            this.setState({tetherBalance: tetherBalance.toString()})
-            console.log({balance:tetherBalance})
+            const tether = new web3.eth.Contract(Tether.abi, tetherData.address);
+            this.setState({tether});
+            let tetherBalance = await tether.methods.balanceOf(this.state.account).call();
+            this.setState({tetherBalance: tetherBalance.toString()});
+            console.log({balance:tetherBalance});
         } else {
-            window.alert('Error! Tether contract not deployed - no detect network!')
+            window.alert('Error! Tether contract not deployed - no detect network!');
         }
 
         //Load RWD Data
-        const rwdData = RWD.networks[newtworkId]
+        const rwdData = RWD.networks[newtworkId];
         if(rwdData){
-            const rwd = new web3.eth.Contract(RWD.abi, rwdData.address)
-            this.setState({rwd})
-            let rwdBalance = await rwd.methods.balanceOf(this.state.account).call() 
+            const rwd = new web3.eth.Contract(RWD.abi, rwdData.address);
+            this.setState({rwd});
+            let rwdBalance = await rwd.methods.balanceOf(this.state.account).call(); 
             // I need to read web3 docs
-            this.setState({rwdBalance: rwdBalance.toString()})
-            console.log({rwdbalance:rwdBalance.toString()})
+            this.setState({rwdBalance: rwdBalance.toString()});
+            console.log({rwdbalance:rwdBalance.toString()});
         } else { 
-            window.alert('Error! Reward Token CONTRACT NOT DEPLOYED')
+            window.alert('Error! Reward Token CONTRACT NOT DEPLOYED');
         }
 
         //Load DecentralBank Data
-        const decentralBankData = DecentralBank.networks[newtworkId]
+        const decentralBankData = DecentralBank.networks[newtworkId];
         if(decentralBankData){
-            const decentralBank = new web3.eth.Contract(DecentralBank.abi, decentralBankData.address)
-            this.setState({decentralBank})
-            let stakingBalance = await decentralBank.methods.stakingBalance(this.state.account).call() 
+            const decentralBank = new web3.eth.Contract(DecentralBank.abi, decentralBankData.address);
+            this.setState({decentralBank});
+            let stakingBalance = await decentralBank.methods.stakingBalance(this.state.account).call(); 
             // I need to read web3 docs
-            this.setState({stakingBalance: stakingBalance.toString()})
-            console.log({stakingBalance: stakingBalance.toString()})
+            this.setState({stakingBalance: stakingBalance.toString()});
+            console.log({stakingBalance: stakingBalance.toString()});
         } else {
-            window.alert('Error! DECENTRAL BANK CONTRACT NOT DEPLOYED')
+            window.alert('Error! DECENTRAL BANK CONTRACT NOT DEPLOYED');
         }
 
 
-        this.setState({loading:false}) 
+        this.setState({loading:false}); 
         //Change the state of loading data once we've loaded all data
     } //End Async for loading blockchain data 
     
@@ -85,28 +85,28 @@ class App extends Component {
     //function to approve transaction
     //deposit tokens is TransferFrom functionality 
     stakeTokens = (amount) => {
-        this.setState({loading:true})
+        this.setState({loading:true});
         this.state.tether.methods.approve(this.state.decentralBank._address, amount).send({from: this.state.account}).on('transactionHash', (hash) => {
         this.state.decentralBank.methods.depositTokens(amount).send({from: this.state.account}).on('transactionHash', (hash) =>{
-            this.setState({loading: false})
-        })
-    })
+            this.setState({loading: false});
+        });
+    });
     }
     
     //Unstake Token function
     unstakeTokens = () => {
         this.setState({loading:true})
         this.state.decentralBank.methods.unstakeTokens().send({from: this.state.account}).on('transactionHash', (hash) =>{
-            this.setState({loading: false})
-        })
+            this.setState({loading: false});
+        });
     }
 
     //Issue Reward Tokens 
     issueRWDTokens = () => {
         this.setState({loading:true})
-        this.state.decentralBank.methods.issueToken().send({from:this.state.account}).on('transactionHash', (hash) => {
-            this.setState({loading:false})
-        })
+        this.state.decentralBank.methods.issueToken().send({from: this.state.account}).on('transactionHash', (hash) => {
+            this.setState({loading:false});
+        });
     } 
 
     //Props is a special feature in react where we cna pass through special proterties,

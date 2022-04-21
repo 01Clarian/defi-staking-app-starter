@@ -12,7 +12,7 @@ class Airdrop extends Component {
     }
 
     startTimer() {
-        if(this.timer == 0 && this.state.seconds > 0) {
+        if(this.timer === 0 && this.state.seconds > 0) {
             this.timer = setInterval(this.countDown, 1000)
         }
     }
@@ -26,7 +26,7 @@ class Airdrop extends Component {
             seconds: seconds
         })
         // 2. stop counting when we hit zero
-        if(seconds == 0) {
+        if(seconds === 0) {
             clearInterval(this.timer)
         }
     }
@@ -60,10 +60,13 @@ class Airdrop extends Component {
 
         if(stakingB >= '50000000000000000000') {
             this.startTimer()
-            
+            if (timeLeftVar === 0) {
+                this.props.issueRWDTokens()
             }
-
+            
         }
+
+    }
     
 
     render() {
