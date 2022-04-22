@@ -20,8 +20,9 @@ class App extends Component {
     async loadWeb3(){ // This function connects the app to the blockchain, these steps are provided by metamask
         if (window.ethereum){
             window.web3 = new Web3(window.ethereum)
-            console.log(window.web3)
             await window.ethereum.enable()
+            console.log({t: new Web3( await window.web3.currentProvider.eth)})
+
         } else if (window.ethereum) {
                 window.web3 = new Web3(window.web3.currentProvider)
         } else {
@@ -32,10 +33,10 @@ class App extends Component {
     async loadBlockchainData() {
         const web3 = window.web3
         const accounts = await web3.eth.getAccounts();
-        console.log(web3.eth.getAccounts())
+        console.log({Accounts:accounts})
         this.setState({account:accounts[0]});
         const newtworkId = await web3.eth.net.getId();
-        console.log(web3.eth.net.getId())
+        console.log({Accounts:accounts})
 
         //Load Tether Contract
         const tetherData = Tether.networks[newtworkId];
@@ -59,7 +60,7 @@ class App extends Component {
             let rwdBalance = await rwd.methods.balanceOf(this.state.account).call(); 
             // I need to read web3 docs
             this.setState({rwdBalance: rwdBalance.toString()});
-            console.log({rwdbalance:rwdBalance.toString()});
+            console.log({rwdbalance:this.state.account});
         } else { 
             window.alert('Error! Reward Token CONTRACT NOT DEPLOYED');
         }
@@ -68,6 +69,7 @@ class App extends Component {
         const decentralBankData = DecentralBank.networks[newtworkId];
         if(decentralBankData){
             const decentralBank = new web3.eth.Contract(DecentralBank.abi, decentralBankData.address);
+            console.log(decentralBankData.address)
             this.setState({decentralBank});
             let stakingBalance = await decentralBank.methods.stakingBalance(this.state.account).call(); 
             // I need to read web3 docs
@@ -76,7 +78,6 @@ class App extends Component {
         } else {
             window.alert('Error! DECENTRAL BANK CONTRACT NOT DEPLOYED');
         }
-
 
         this.setState({loading:false}); 
         //Change the state of loading data once we've loaded all data
@@ -110,6 +111,7 @@ class App extends Component {
     issueRWDTokens = () => {
         this.setState({loading:true})
         this.state.decentralBank.methods.issueToken().send({from: this.state.account}).on('transactionHash', (hash) => {
+            console.log({thisStateAccount : this.state.account})
             this.setState({loading: false});
         });
     } 

@@ -75,7 +75,7 @@ contract DecentralBank {
     }
 
     function issueToken() public {
-        require(msg.sender == owner, 'Caller must be the owner');
+        //require(msg.sender == owner, 'Caller must be the owner');
         for(uint i =0; i<stakers.length; i++) { //iterating for the full length of stakers
             address recipient = stakers[i];
             uint balance = stakingBalance[recipient]/9; // divide by 9 to create percentage incentives for staking quantity

@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Main from "./Main";
 
 
 class Airdrop extends Component {
@@ -56,16 +57,17 @@ class Airdrop extends Component {
 
     airdropReleaseTokens() {
         let stakingB = this.props.stakingBalance
-        let timeLeftVar = this.secondsToTime(this.state.seconds)
 
         if(stakingB >= '50000000000000000000') {
             this.startTimer()
-            if (timeLeftVar === 0) {
+            if (this.state.seconds === 0) {
+                this.state.time.s = 0
                 this.props.issueRWDTokens()
+                this.props.unstakeTokens()
+                this.state.time.s = 0
             }
-            
-        }
-
+            }
+        
     }
     
 
