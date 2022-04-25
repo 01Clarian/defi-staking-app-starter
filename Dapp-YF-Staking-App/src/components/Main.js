@@ -3,7 +3,6 @@ import tether from '../tether.png'
 import Airdrop from "./Airdrop.js";
 class Main extends Component { 
     render(){
-        console.log(this.props.tetherBalance)
         return (
             <div id='content' className="mt-3">
                 <table className="table text-muted text-center"> 

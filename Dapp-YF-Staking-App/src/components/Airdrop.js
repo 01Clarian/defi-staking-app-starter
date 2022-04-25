@@ -58,11 +58,10 @@ class Airdrop extends Component {
         let timeLeftVar = this.secondsToTime(this.state.seconds)
         if(stakingB >= "50000000000000000000") {
             this.startTimer()
-            if (timeLeftVar == 0) {
-                console.log('Timer reached 0')
-                }
+            if(this.secondsToTime(this.state.seconds) == 0){
+            this.props.unstakeTokens()
+            }
         }
-
     }
 
 
