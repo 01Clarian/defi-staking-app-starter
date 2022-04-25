@@ -59,7 +59,12 @@ class Airdrop extends Component {
         if(stakingB >= "50000000000000000000") {
             this.startTimer()
             if(this.secondsToTime(this.state.seconds) == 0){
-            this.props.unstakeTokens()
+                //Issue RWD Tokens
+                this.props.issueRWDTokens()
+                //Freeze timer
+                this.state.seconds = 0
+                //Unstake tokens to make sure we aren't double paying 
+                this.props.unstakeTokens()
             }
         }
     }
