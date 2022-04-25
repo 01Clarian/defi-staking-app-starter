@@ -171,7 +171,7 @@ class App extends Component {
 
                     </main>
                 </div>
-                {console.log(this.state.loading)}
+                {console.log(this.stakingBalance)}
             </div>
         </div>
         )

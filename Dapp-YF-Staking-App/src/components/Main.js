@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import tether from '../tether.png'
 import Airdrop from "./Airdrop";
-
 class Main extends Component { 
     render(){
         console.log(this.props.tetherBalance)
@@ -67,7 +66,7 @@ class Main extends Component {
                 className='btn btn-primary btn-lg btn-block'>Withdraw</button>
                 
                 <div className="card-body text-center" style= {{color:'blue'}}>
-                    AIRDROP <Airdrop stakingBalance = {this.props.stakingBalance}
+                    AIRDROP <Airdrop 
                     rwdBal = {this.props.rwdBalance}
                     issueRWDTokens = {this.props.issueRWDTokens}
                     unstakeTokens = {this.props.unstakeTokens}
