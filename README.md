@@ -15,7 +15,7 @@ git clone - https://github.com/01Clarian/defi-staking-app-starter.git
 
 npm install
 
-### 4. Make sure truggle -g is installed
+### 4. Make sure truffle -g is installed
 
 # use truffle compiile 
 (compile contracts)
